@@ -24,14 +24,37 @@ function arg(name, fallback) {
   return at === -1 ? fallback : argv[at + 1];
 }
 
-// The commit that holds the plugin sources. Defaults to HEAD, so a release
-// build is pinned to what it ships.
-const commit = arg("commit") ?? git("rev-parse", "HEAD");
+// The commit that holds the plugin sources.
+//
+// It is the last commit that touched the plugin package, not HEAD: the index
+// lives in this repository too, so pinning HEAD would make every index-only
+// commit invalidate the pin, and the release workflow would then fail on its
+// own index rebuild.
+const PLUGIN_PATHS = ["package.json", "lib", "locale", "icon.svg", "cordis.patch.yml"];
+function lastPluginCommit() {
+  try {
+    return git("rev-list", "-1", "HEAD", "--", ...PLUGIN_PATHS);
+  } catch {
+    return git("rev-parse", "HEAD");
+  }
+}
+const commit = arg("commit") ?? lastPluginCommit();
 const out = resolve(repoRoot, arg("out", join("market", "index.json")));
 
 const manifest = JSON.parse(readFileSync(join(repoRoot, "package.json"), "utf8"));
 const version = manifest.version;
-const published = Math.floor(Date.now() / 1000);
+
+// The publish time is the commit's own date, so rebuilding the index for the
+// same sources produces the same document and a rebuild never differs from
+// what is committed.
+function commitTimestamp(sha) {
+  try {
+    return Number(git("show", "-s", "--format=%ct", sha));
+  } catch {
+    return Math.floor(Date.now() / 1000);
+  }
+}
+const published = commitTimestamp(commit);
 
 const index = {
   format: 1,

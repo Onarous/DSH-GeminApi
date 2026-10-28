@@ -59,11 +59,11 @@
       "versions": [
         {
           "version": "1.3.0",
-          "publishTimestamp": 1793209075,
+          "publishTimestamp": 1793208884,
           "source": {
             "type": "git",
             "url": "https://github.com/Onarous/DSH-GeminApi",
-            "commit": "75c00255ce0f8034e21cef7e6aa047d3828943bd"
+            "commit": "fc27f96d421aa3714b02b61fb091917ad4e85318"
           },
           "engines": {
             "dsh": ">=0.2.0-rc.1"
