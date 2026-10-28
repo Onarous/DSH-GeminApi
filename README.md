@@ -19,7 +19,13 @@
 2. В **Index sources** добавьте адрес индекса:
 
    ```
-   https://raw.githubusercontent.com/Onarous/DSH-GeminApi/main/market/index.json
+   https://onarous.github.io/DSH-GeminApi/market/index.json
+   ```
+
+   Запасной адрес (тот же файл через CDN jsDelivr):
+
+   ```
+   https://cdn.jsdelivr.net/gh/Onarous/DSH-GeminApi@main/market/index.json
    ```
 
 3. Найдите **GeminApi Quotas** и нажмите **Install**.
