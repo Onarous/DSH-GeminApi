@@ -32,10 +32,14 @@ function arg(name, fallback) {
 // own index rebuild.
 const PLUGIN_PATHS = ["package.json", "lib", "locale", "icon.svg", "cordis.patch.yml"];
 function lastPluginCommit() {
+  const head = git("rev-parse", "HEAD");
   try {
-    return git("rev-list", "-1", "HEAD", "--", ...PLUGIN_PATHS);
+    // A shallow checkout has no history to walk, and the walk answers with an
+    // empty string rather than failing, so the result is checked.
+    const found = git("rev-list", "-1", "HEAD", "--", ...PLUGIN_PATHS);
+    return found === "" ? head : found;
   } catch {
-    return git("rev-parse", "HEAD");
+    return head;
   }
 }
 const commit = arg("commit") ?? lastPluginCommit();
