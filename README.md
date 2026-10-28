@@ -8,10 +8,27 @@
 |---|---|
 | `package.json`, `lib/`, `locale/`, `icon.svg`, `cordis.patch.yml` | сам бандл `dsh-plugin-geminapi-quotas` — устанавливается через интерфейс плагинов DSH |
 | `market/index.json` | индекс формата 1 для «Discover» вкладки страницы Plugins |
-| `tools/` | скрипты для пересборки индекса и валидации |
+| `tools/build-index.mjs` | пересборка индекса с закреплением текущего коммита |
+| `tools/dsh-api.cjs` | вызов Remote-методов запущенного DSH через локальный Web-карьер |
 
 Пакет плагина — это корень репозитория, поэтому установка не зависит от
 подкаталога: pnpm разрешает корневой `package.json` напрямую.
+
+### Проверка через API
+
+```bash
+# какие источники индексов настроены
+node tools/dsh-api.cjs pluginMarket/listIndexes
+
+# что видит вкладка Discover
+node tools/dsh-api.cjs pluginMarket/search '{"url":"https://onarous.github.io/DSH-GeminApi/market/index.json","query":{"sort":{"kind":"index"},"offset":0,"limit":50}}'
+
+# состояние бандлов профиля
+node tools/dsh-api.cjs pluginManager/listBundles
+```
+
+Web-карьер DSH (`127.0.0.1:27979`) проверяет подписанную cookie, ключ для
+которой лежит в `~/.dsh/.credentials.yaml`; скрипт читает его оттуда.
 
 ## Установка через интерфейс DSH
 
