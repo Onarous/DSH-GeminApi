@@ -1,0 +1,17 @@
+# Bundle patch for dsh-plugin-geminapi-quotas.
+#
+# The rows this bundle inserts are named after the package, so the Loader
+# resolves them from the profile's node_modules. `config` holds the plugin's
+# own settings; the plugin's `Config` schema validates them at activation.
+- insert:
+    - id: geminapi-quotas
+      name: "dsh-plugin-geminapi-quotas"
+      config:
+        apiUrl: "https://gem.onarous.ru"
+        taskModel: "claude-sonnet-5-5-medium"
+        taskMaxSubtasks: 5
+        taskMaxTokens: 32768
+        routeSimpleToGemini: true
+        taskTimeoutMs: 600000
+        subagentSimpleModel: "gemini-3.8-flash-medium"
+        subagentMaxTokens: 65536

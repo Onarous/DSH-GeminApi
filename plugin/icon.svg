@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="GeminApi Quotas">
+  <defs>
+    <linearGradient id="gq-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2b6cb0" />
+      <stop offset="100%" stop-color="#1a365d" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#gq-bg)" />
+  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+    <path d="M16 44 L26 30 L34 36 L48 20" />
+  </g>
+  <circle cx="48" cy="20" r="5" fill="#68d391" />
+  <rect x="16" y="48" width="32" height="4" rx="2" fill="#ffffff" opacity="0.65" />
+</svg>

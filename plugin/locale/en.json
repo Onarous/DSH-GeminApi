@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "GeminApi Quotas",
+    "description": "Shows GeminApi account quotas and provides the parallel_task and dsh_subagent tools for DeepSeek Harness."
+  }
+}

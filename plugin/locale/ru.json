@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Квоты GeminApi",
+    "description": "Показывает квоты аккаунтов GeminApi и добавляет инструменты parallel_task и dsh_subagent для DeepSeek Harness."
+  }
+}
