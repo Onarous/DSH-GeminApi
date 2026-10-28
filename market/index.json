@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Onarous DSH Plugins"
+  },
+  "description": {
+    "en": "Plugin bundles published by Onarous for the DeepSeek Harness plugin market."
+  },
+  "metadata": {
+    "categories": {
+      "productivity": {
+        "title": {
+          "en": "Productivity"
+        }
+      },
+      "developer": {
+        "title": {
+          "en": "Developer Tools"
+        }
+      }
+    },
+    "labels": {
+      "community": {
+        "title": {
+          "en": "Community"
+        }
+      }
+    },
+    "sortKeys": {}
+  },
+  "plugins": [
+    {
+      "name": "dsh-plugin-geminapi-quotas",
+      "title": {
+        "en": "GeminApi Quotas"
+      },
+      "description": {
+        "en": "Shows GeminApi account quotas and provides the parallel_task and dsh_subagent tools for DeepSeek Harness."
+      },
+      "author": "Onarous",
+      "homepage": "https://github.com/Onarous/DSH-GeminApi",
+      "icon": "https://raw.githubusercontent.com/Onarous/DSH-GeminApi/main/plugin/icon.svg",
+      "repository": {
+        "url": "https://github.com/Onarous/DSH-GeminApi",
+        "directory": "plugin"
+      },
+      "metadata": {
+        "category": "productivity",
+        "keywords": [
+          "geminapi",
+          "quotas",
+          "parallel-task",
+          "subagent",
+          "parallel"
+        ],
+        "labels": [
+          "community"
+        ]
+      },
+      "versions": [
+        {
+          "version": "1.3.0",
+          "publishTimestamp": 1793208125,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/Onarous/DSH-GeminApi",
+            "commit": "7266bafb35b0107e033a67aec32aa13ecb532538",
+            "path": "plugin"
+          },
+          "engines": {
+            "dsh": ">=0.2.0-rc.1"
+          }
+        }
+      ]
+    }
+  ]
+}
