@@ -6,9 +6,12 @@
 
 | путь | что это |
 |---|---|
-| `plugin/` | бандл `dsh-plugin-geminapi-quotas` — устанавливается через интерфейс плагинов DSH |
+| `package.json`, `lib/`, `locale/`, `icon.svg`, `cordis.patch.yml` | сам бандл `dsh-plugin-geminapi-quotas` — устанавливается через интерфейс плагинов DSH |
 | `market/index.json` | индекс формата 1 для «Discover» вкладки страницы Plugins |
 | `tools/` | скрипты для пересборки индекса и валидации |
+
+Пакет плагина — это корень репозитория, поэтому установка не зависит от
+подкаталога: pnpm разрешает корневой `package.json` напрямую.
 
 ## Установка через интерфейс DSH
 
@@ -53,8 +56,24 @@ DSH установит бандл из этого репозитория, заф
 ## Версии
 
 Индекс указывает на конкретный коммит, поэтому установка всегда
-воспроизводима. Новые релизы: обновить `plugin/`, поднять версию в
-`plugin/package.json`, пересобрать индекс, запушить.
+воспроизводима. Новые релизы:
+
+```bash
+# 1. изменить плагин, поднять версию в package.json
+# 2. закоммитить
+git commit -am "Release 1.4.0"
+# 3. пересобрать индекс (закрепляет текущий HEAD) и запушить
+node tools/build-index.mjs
+git commit -am "Update market index"
+git push
+```
+
+Индекс валидируется тем же валидатором, который использует сам DSH
+(`@deepseek-ai/dsh-plugin-market-index`):
+
+```bash
+node -e "import('@deepseek-ai/dsh-plugin-market-index').then(m=>{const d=JSON.parse(require('fs').readFileSync('market/index.json','utf8'));m.parseMarketIndex(d,'https://raw.githubusercontent.com/Onarous/DSH-GeminApi/main/market/index.json');console.log('VALID')})"
+```
 
 ## Лицензия
 
