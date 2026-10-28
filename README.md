@@ -95,7 +95,7 @@ git push
 (`@deepseek-ai/dsh-plugin-market-index`):
 
 ```bash
-node -e "import('@deepseek-ai/dsh-plugin-market-index').then(m=>{const d=JSON.parse(require('fs').readFileSync('market/index.json','utf8'));m.parseMarketIndex(d,'https://raw.githubusercontent.com/Onarous/DSH-GeminApi/main/market/index.json');console.log('VALID')})"
+node -e "import('@deepseek-ai/dsh-plugin-market-index').then(m=>{const d=JSON.parse(require('fs').readFileSync('market/index.json','utf8'));m.parseMarketIndex(d,'https://onarous.github.io/DSH-GeminApi/market/index.json');console.log('VALID')})"
 ```
 
 ## Лицензия
